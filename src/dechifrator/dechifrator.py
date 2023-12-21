@@ -3,10 +3,14 @@ UTF-8
 This is a file with all classes of decoders and so on.
 """
 from . import MORSE_CODES_DICT
+from . import CAESAR_LETTERS_DICT
 
 
 class MorseTranslator:
-    """This is a class for encrypting and decrypting Morse code."""
+    """
+    This is a class for encrypting and decrypting Morse code.
+    """
+
     def __init__(self, language: str = "EN", separator: str = "/") -> None:
         """
         Here we set default values like: the language for which further actions will be performed.
@@ -36,14 +40,18 @@ class MorseTranslator:
         self.change_separator(separator)
 
     def change_separator(self, separator) -> None:
-        """This function change separator"""
+        """
+        This function change separator
+        """
         del self.decipher[self.separator]
         self.decipher[separator] = " "
         self.encrypt[" "] = separator
         self.separator = separator
 
     def change_language(self, language: str, separator: str = "/") -> None:
-        """This function changes the language options"""
+        """
+        This function changes the language options
+        """
         self.decipher_dict_letters: dict[str:str] = MORSE_CODES_DICT[language]["DECODE"]
         self.decipher_dict_symbols: dict[str:str] = MORSE_CODES_DICT["SYM"]["DECODE"]
         self.decipher_dict_numbers: dict[str:str] = MORSE_CODES_DICT["NUM"]["DECODE"]
@@ -91,5 +99,6 @@ class MorseTranslator:
 
 class CaesarTranslator:
     """"""
-    def __init__(self, language:str = "EN") -> None:
-        pass
+
+    def __init__(self, language: str = "EN") -> None:
+        self.letters: dict[str:str] = CAESAR_LETTERS_DICT[language]

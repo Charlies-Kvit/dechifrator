@@ -3,6 +3,7 @@ UTF-8
 This is config file, all dictionaries for encoding and decoding ciphers are written here.
 MORSE CODE:
 """
+import string
 
 MORSE_CODE_EN_CODE: dict[str:str] = {'a': '.—', 'b': '—...', 'c': '—.—.', 'd': '—..',
                                      'e': '.', 'f': '..—.', 'g': '——.', 'h': '....',
@@ -65,9 +66,9 @@ MORSE_CODE_SYMBOLS_LANGUAGE: dict[str:str] = {'.-.-.-': '.', '--..--': ',', '---
                                               '-...-': '=', '.-.-.': '+', '-..-.': '/', '.--.-.': '@', '/': " ",
                                               "-.-.--": "!"}
 
-"""
-This is a single dictionary where all morse ciphers are collected
-"""
+
+# This is a single dictionary where all morse ciphers are collected
+
 MORSE_CODES_DICT: dict = {
     "RU":
         {
@@ -85,4 +86,13 @@ MORSE_CODES_DICT: dict = {
         {
             "DECODE": MORSE_CODE_SYMBOLS_LANGUAGE, "ENCODE": MORSE_CODE_SYMBOLS_CODE
         }
+}
+
+
+# This is a single dictionary where all letters are collected
+
+CAESAR_LETTERS_DICT: dict = {
+    "RU": "абвгдеёжзийклмнопрстуфхцчшщъыьэюя",
+    "EN": string.ascii_letters,
+    "NUM": string.digits
 }
